@@ -67,5 +67,12 @@ module ShipIO
       result = RestClient.get url, {"Authorization" => "Bearer #{api_key}"}
       JSON.parse(result)
     end
+
+    def post(url, params={})
+      url = '/' + url if url[0] != '/'
+      url = ShipIO::BASE_URL + url
+      result = RestClient.post url, {"Authorization" => "Bearer #{api_key}"}
+      JSON.parse(result)
+    end
   end
 end
