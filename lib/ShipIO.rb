@@ -1,4 +1,4 @@
-require 'rest-client'
+require 'rest_client'
 require 'json'
 require 'ShipIO/models/job'
 require 'ShipIO/models/build'
