@@ -31,5 +31,14 @@ describe ShipIO::Client do
 
       expect(builds.count).to be > 0
     end
+
+    it "should return an individual build based off a build id" do
+      job = @client.jobs.first
+      uuid = job.builds.first.uuid
+
+      build = @client.build(job, uuid)
+
+      expect(build.uuid).to_not be_nil
+    end
   end
 end

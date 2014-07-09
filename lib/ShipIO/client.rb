@@ -12,12 +12,12 @@ module ShipIO
       jobs = []
       for json_job in result do
         job = Job.new(self, {
-                  uuid: json_job["id"],
-                  name: json_job["name"],
-                  repository_name: json_job["repository"]["name"],
-                  repository_branch: json_job["repository"]["selected_branch"],
-                  repository_url: json_job["repository"]["html_url"]
-                })
+            uuid: json_job["id"],
+            name: json_job["name"],
+            repository_name: json_job["repository"]["name"],
+            repository_branch: json_job["repository"]["selected_branch"],
+            repository_url: json_job["repository"]["html_url"]
+        })
         jobs << job
       end
       jobs
@@ -25,9 +25,16 @@ module ShipIO
 
     # Returns a build from a Job
     def build(job, build_id)
-      response = get("jobs/#{job.uuid}/builds/#{build_id}.json")
+      json_build = get("jobs/#{job.uuid}/builds/#{build_id}.json")
 
-      puts response
+      Build.new({
+                    uuid: json_build["id"],
+                    build_number: json_build["build_number"],
+                    commit_sha: json_build["commit_sha"],
+                    state: json_build["state"],
+                    log_url: json_build["log_url"],
+                    successful: json_build["successful"]
+                })
     end
 
     # Returns all the builds by a User
@@ -48,6 +55,7 @@ module ShipIO
       builds
     end
 
+    # Gets the Pusher channel for a user
     def pusher_channel
       get("user/channel.json")
     end
