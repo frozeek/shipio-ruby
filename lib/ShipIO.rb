@@ -6,5 +6,5 @@ require 'ShipIO/version'
 require 'ShipIO/client'
 
 module ShipIO
-  BASE_URL = "https://ship.io"
+  BASE_URL = "https://app.ship.io"
 end
