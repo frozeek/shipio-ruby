@@ -2,6 +2,7 @@ require 'rest_client'
 require 'json'
 require 'ShipIO/models/job'
 require 'ShipIO/models/build'
+require 'ShipIO/models/artifact'
 require 'ShipIO/version'
 require 'ShipIO/client'
 

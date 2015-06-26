@@ -1,6 +1,6 @@
 module ShipIO
   class Build
-    attr_accessor :uuid, :build_number, :commit_sha, :state, :successful, :log_url
+    attr_accessor :uuid, :build_number, :commit_sha, :state, :successful, :log_url, :artifacts
 
     def initialize(options = {})
       @uuid = options[:uuid]
@@ -9,6 +9,7 @@ module ShipIO
       @state = options[:state]
       @successful = options[:successful]
       @log_url = options[:log_url]
+      @artifacts = options[:artifacts]
     end
   end
 end
